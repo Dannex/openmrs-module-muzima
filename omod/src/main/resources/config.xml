@@ -54,4 +54,12 @@
     </messages>
     <!-- /Internationalization -->
 
+
+
+    <!-- Global Properties -->
+    <globalProperty>
+		<property>@MODULE_ID@.settings</property>
+		<defaultValue>true</defaultValue>
+		<description>Edited Observation Approver</description>
+	</globalProperty>
 </module>
