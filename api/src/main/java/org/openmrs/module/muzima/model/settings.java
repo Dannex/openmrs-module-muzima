@@ -19,6 +19,7 @@ import java.util.Set;
 package org.openmrs.module.muzima.model;
 public class Settings extends AuditableData{
     
+    public static final Boolean EDIT_APPROVED = "settings";
     private ErrorData edited_Obs_Approval = new (final AuditableData data);
     //these variables to get data from the observation
     String msg;
@@ -29,7 +30,7 @@ public class Settings extends AuditableData{
     
     public static void main(String[] args) {  
         
-        if(isApproved()){
+        if(EDIT_APPROVED==true){
             //Send all Edited Obs to the error queue (Better to a new queue named Edited Obs Approval)   
             edited_Obs_Approval.setMessage(msg);
             edited_Obs_Approval.setDateProcessed(dateprocessed);
@@ -40,20 +41,5 @@ public class Settings extends AuditableData{
        
         
     }
-    public Boolean isApproved(){
-            try{
-                Boolean data;
-                Connection connection = DriverManager.getConnection("173.255.205.23:8081","admin","test");
-                java.sql.Statement statement = connection.createStatement();
-                String sql = "SELECT approved? FROM muzima_edit_approval WHERE id = 1 ";
-                ResultSet rs = statement.executeQuery(sql);
-                while(rs.next()){
-                    data = rs.getBoolean("approved?");
-                }
-            }catch(SQLException exc){
-                System.out.print(exc.getMessage());
-            } 
-            return data;
-    }
-    
+        
 }
