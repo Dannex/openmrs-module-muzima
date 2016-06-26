@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    <hibernate-mapping package="org.openmrs.module.muzima.model">
+    	<class name="settings" table="muzima_edit_approval">
+    		<id name="id" type="java.lang.Integer" column="id" unsaved-value="0">
+            	<generator class="native"/>
+        	</id>
+        
+	        <property name="setting" type="java.lang.String" column="settingtag" not-null="true"/>
+    	    
+        	<property name="approval" type="java.lang.Boolean" column="approved??" not-null="true"/>
+        
+	        <many-to-one name="approvedBy" class="org.openmrs.User" not-null="true">
+        
+    	        <column name="approvedBy"/>
+        
+        	</many-to-one>
+        
+        `	<property name="dateApproved" type="java.util.Date" column="date_approved" not-null="true" length="19"/>
+    	
+    	</class>
+    </hibernate-mapping>
